@@ -1,0 +1,129 @@
+/* ========================
+   BASE / GENERALE
+======================== */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  overflow: hidden; /* Blocca lo scroll della pagina */
+}
+
+.mappa {
+  color: white;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", sans-serif;
+  overflow: hidden; /* Blocca lo scroll del contenitore principale */
+}
+
+.titolo {
+  margin: 10px 0;
+}
+
+/* ========================
+   BOTTONI BASE
+======================== */
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Container per bottoni affiancati */
+.bottoni-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.bottoni-container .btn {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+}
+
+/* conferma = prenota */
+.btn.conferma {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.btn.conferma:hover:not(:disabled) {
+  background-color: #27ae60;
+}
+
+.btn.conferma:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btn.conferma:disabled:hover {
+  transform: none;
+}
+
+/* chiudi popup */
+.btn.chiudi {
+  background-color: #555;
+  color: white;
+}
+
+.btn.chiudi:hover {
+  background-color: #666;
+}
+
+/* ========================
+   SCROLLBAR PERSONALIZZATA
+======================== */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ========================
+   ANIMAZIONI
+======================== */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulseGreen {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+  }
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+  }
+}

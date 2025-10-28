@@ -1,0 +1,46 @@
+/* ========================
+   TAVOLI
+======================== */
+.tavolo {
+  position: absolute;
+  width: 25px;
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: white;
+  transition: 0.2s ease;
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  z-index: 5;
+}
+
+/* stato libero / occupato */
+.tavolo.libero {
+  background-color: #00c500;
+}
+
+.tavolo.occupato {
+  background-color: #e74c3c;
+}
+
+.tavolo.parziale {
+  background-color: #ff9800;
+}
+
+/* animazione hover */
+.tavolo:hover {
+  transform: scale(1.15);
+  z-index: 10;
+}
+
+/* Tavoli con rotazione (es. orizzontali) */
+.tavolo span {
+  font-size: 9px;
+  pointer-events: none;
+  transform-origin: center;
+  color: #fff;
+}

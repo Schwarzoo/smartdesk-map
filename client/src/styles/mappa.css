@@ -1,0 +1,33 @@
+/* ========================
+   AREA MAPPA
+======================== */
+.area {
+  flex: 1;
+  position: relative;
+  background-color: #111;
+  border: 2px solid #444;
+  margin: 10px auto;
+  width: 90%;
+  border-radius: 10px;
+  overflow: hidden; /* nasconde tavoli fuori mappa */
+  cursor: grab;
+  touch-action: none; /* necessario per gestire pinch/pan touch e touchpad */
+}
+
+.contenuto-area {
+  position: relative;
+  width: 2000px; /* area di lavoro ampia per tutti i tavoli */
+  height: 1200px;
+  overflow-y: hidden;
+  transition: transform 0.2s;
+}
+
+/* ========================
+   MURI
+======================== */
+.muro {
+  position: absolute;
+  background-color: gray;
+  border-radius: 2px;
+  z-index: 1; /* sotto i tavoli */
+}

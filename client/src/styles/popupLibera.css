@@ -1,0 +1,46 @@
+/* ========================
+   POPUP LIBERA TAVOLO
+======================== */
+.popup-libera {
+  max-width: 450px;
+}
+
+.info-libera {
+  background-color: #1a1a1a;
+  border-left: 3px solid #ff9800;
+  padding: 12px 15px;
+  margin: 15px 0;
+  border-radius: 6px;
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ========================
+   PULSANTE LIBERA TAVOLO PRINCIPALE
+======================== */
+.libera-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
+
+.btn-libera-principale {
+  background-color: #ff9800;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-libera-principale:hover {
+  background-color: #f57c00;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(255, 152, 0, 0.4);
+}
