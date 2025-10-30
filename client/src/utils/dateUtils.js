@@ -4,7 +4,8 @@
 
 /**
  * Converte un numero di ora (es. 14.5 = 14:30) in un oggetto Date UTC
- * @param {number} oraNumero - L'ora in formato decimale (es. 14.5 per le 14:30)
+ * Gestisce anche ore oltre le 24 (es. 24.5 = 00:30 del giorno dopo)
+ * @param {number} oraNumero - L'ora in formato decimale (es. 14.5 per le 14:30, 24.5 per le 00:30 del giorno dopo)
  * @param {string} giorno - "oggi" o "domani"
  * @returns {Date} Data in formato UTC
  */
@@ -22,11 +23,18 @@ export function oraAData(oraNumero, giorno) {
     giornoMese = domani.getDate();
   }
 
-  const ore = Math.floor(oraNumero);
+  // Gestisce ore >= 24 (es. 24.5 = 00:30 del giorno dopo)
+  const giorniExtra = Math.floor(oraNumero / 24);
+  const oreDelGiorno = Math.floor(oraNumero % 24);
   const minuti = (oraNumero % 1) * 60;
 
-  // Crea la data in UTC per evitare conversioni di timezone
-  return new Date(Date.UTC(anno, mese, giornoMese, ore, minuti, 0, 0));
+  // Crea la data in UTC, aggiungendo i giorni extra se necessario
+  const data = new Date(Date.UTC(anno, mese, giornoMese, oreDelGiorno, minuti, 0, 0));
+  if (giorniExtra > 0) {
+    data.setUTCDate(data.getUTCDate() + giorniExtra);
+  }
+  
+  return data;
 }
 
 /**

@@ -36,7 +36,7 @@ export function generaOrariInizio(giorno) {
 
 /**
  * Genera gli orari disponibili per la fine della prenotazione
- * Minimo 1 ora dopo l'inizio, massimo fino a mezzanotte
+ * Minimo 1 ora dopo l'inizio, massimo fino alle 6:00 del giorno dopo (30 ore totali)
  * @param {number} oraInizio - Ora di inizio in formato decimale
  * @param {string} giorno - "oggi" o "domani" (attualmente non usato ma disponibile)
  * @returns {Array} Array di oggetti {valore, label} con gli orari disponibili
@@ -46,15 +46,20 @@ export function generaOrariFine(oraInizio, giorno) {
   
   const orari = [];
   const oraMinima = oraInizio + DURATA_MINIMA; // Minimo 1 ora dopo
-  const oraMassima = ORA_MASSIMA; // Fino a mezzanotte (00:00 del giorno dopo)
+  const oraMassima = 30; // Fino alle 6:00 del giorno dopo (permette prenotazioni notturne)
   
   let oraCorrente = oraMinima;
   while (oraCorrente <= oraMassima) {
     const ora = Math.floor(oraCorrente) % ORA_MASSIMA;
     const minuti = (oraCorrente % 1) === INCREMENTO_MEZZ_ORA ? "30" : "00";
+    
+    // Formatta correttamente l'ora (0-23)
+    const oraFormattata = ora.toString().padStart(2, '0');
+    const minutiFormattati = minuti.padStart(2, '0');
+    
     orari.push({ 
       valore: oraCorrente, 
-      label: `${ora}:${minuti}` 
+      label: `${oraFormattata}:${minutiFormattati}` 
     });
     oraCorrente += INCREMENTO_MEZZ_ORA; // Incremento di 30 minuti
   }
