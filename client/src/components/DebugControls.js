@@ -38,7 +38,7 @@ function DebugControls({ tavoli, onAggiornamento }) {
   return (
     <div className="debug-container">
       <button className="btn-debug" onClick={handleCreaPrenotazioniCasuali}>
-        Crea prenotazioni casuali
+        Prenot. casuali
       </button>
       <button className="btn-debug delete" onClick={handleCancellaPrenotazioni}>
         Cancella tutte

@@ -12,14 +12,55 @@
   overflow: hidden; /* nasconde tavoli fuori mappa */
   cursor: grab;
   touch-action: none; /* necessario per gestire pinch/pan touch e touchpad */
+  user-select: none;
 }
 
+.area:active {
+  cursor: grabbing; /* ✅ Mostra "mano chiusa" durante trascinamento */
+}
+
+/* ========================
+   📱 MAPPA MOBILE
+======================== */
+@media (max-width: 768px) {
+  .area {
+    width: 95%;
+    margin: 5px auto;
+    border-width: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .area {
+    width: 98%;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+}
 .contenuto-area {
   position: relative;
   width: 2000px; /* area di lavoro ampia per tutti i tavoli */
   height: 1200px;
   overflow-y: hidden;
-  transition: transform 0.2s;
+  will-change: transform; /* ottimizzazione GPU */
+}
+
+/* ========================
+   📱 CONTENUTO AREA MOBILE - RIDIMENSIONATO
+======================== */
+@media (max-width: 768px) {
+  .contenuto-area {
+    /* Scala tutto al 70% per vedere più tavoli */
+    transform-origin: 0 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenuto-area {
+    /* Scala al 50% su schermi piccoli per vista completa */
+    width: 1400px;
+    height: 900px;
+  }
 }
 
 /* ========================
@@ -30,4 +71,98 @@
   background-color: gray;
   border-radius: 2px;
   z-index: 1; /* sotto i tavoli */
+}
+
+/* ========================
+   📱 CONTROLLI ZOOM MOBILE
+======================== */
+.zoom-controls {
+  display: none; /* Nascosti su desktop */
+}
+
+.info-text {
+  display: none;
+  position: absolute;
+  align-self: center;
+  top: 52%;
+  z-index: 100;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .mappa h1 {
+    font-size: 1.5rem;
+    
+  }
+  .zoom-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 50;
+    align-items: center;
+  }
+  .info-text {
+    display: block;
+  }
+  
+  .zoom-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(124, 199, 126, 0.774);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .zoom-btn:active {
+    transform: scale(0.95);
+    background-color: rgba(76, 175, 80, 1);
+  }
+  
+  .zoom-level {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #4CAF50;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: bold;
+    border: 1px solid rgba(76, 175, 80, 0.5);
+    user-select: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .zoom-controls {
+    bottom: 15px;
+    right: 15px;
+    gap: 6px;
+  }
+  
+  .zoom-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 24px;
+  }
+  
+  .zoom-level {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
 }

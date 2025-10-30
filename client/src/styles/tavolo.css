@@ -37,6 +37,38 @@
   z-index: 10;
 }
 
+/* ========================
+   📱 TAVOLI MOBILE - PIÙ GRANDI
+======================== */
+@media (max-width: 768px) {
+  
+  
+  .tavolo span {
+    font-size: 10px;
+  }
+  
+  /* Touch più facile - area cliccabile più grande */
+  .tavolo::before {
+    content: '';
+    position: absolute;
+    inset: -8px; /* Aumenta area touch di 8px in ogni direzione */
+    z-index: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  
+  
+  .tavolo span {
+    font-size: 11px;
+  }
+  
+  /* Area touch ancora più grande su schermi piccoli */
+  .tavolo::before {
+    inset: -10px;
+  }
+}
+
 /* Tavoli con rotazione (es. orizzontali) */
 .tavolo span {
   font-size: 9px;

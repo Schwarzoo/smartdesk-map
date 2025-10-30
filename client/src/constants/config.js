@@ -2,7 +2,7 @@
 export const API_BASE = "https://smartdesk-backend.fly.dev/api";
 
 // Configurazione Zoom
-export const ZOOM_MIN = 0.5;
+export const ZOOM_MIN = 0.27; // Ridotto per vedere tutti i tavoli su mobile
 export const ZOOM_MAX = 2;
 export const ZOOM_STEP = 0.001;
 

@@ -8,15 +8,21 @@ import Tavolo from "./Tavolo";
 
 /**
  * Componente che renderizza la mappa con tavoli e muri
- * @param {Object} props - { tavoli, zoom, areaRef, onSelezionaTavolo }
+ * @param {Object} props - { tavoli, zoom, offset, areaRef, onSelezionaTavolo, onZoomIn, onZoomOut }
  */
-function Mappa({ tavoli, zoom, areaRef, onSelezionaTavolo }) {
+function Mappa({ tavoli, zoom, offset, areaRef, onSelezionaTavolo, onZoomIn, onZoomOut }) {
   return (
     <div className="area" ref={areaRef}>
+      {/* Controlli zoom mobile */}
+      <div className="zoom-controls">
+        <button className="zoom-btn" onClick={onZoomIn} aria-label="Zoom in">+</button>
+        <button className="zoom-btn" onClick={onZoomOut} aria-label="Zoom out">−</button>
+      </div>
+      
       <div
         className="contenuto-area"
         style={{
-          transform: `scale(${zoom})`,
+          transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
           transformOrigin: "0 0",
         }}
       >

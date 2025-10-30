@@ -14,12 +14,42 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
   font-family: "Segoe UI", sans-serif;
   overflow: hidden; /* Blocca lo scroll del contenitore principale */
 }
 
 .titolo {
   margin: 10px 0;
+  font-size: 1.8rem;
+}
+
+/* ========================
+   📱 MOBILE OTTIMIZZATO
+======================== */
+@media (max-width: 768px) {
+  .titolo {
+    font-size: 1.3rem;
+    margin: 5px 0;
+  }
+  
+  .mappa {
+    height: 50dvh; /* Dynamic viewport height - migliore su mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .titolo {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  
+  .mappa {
+    margin-top: 130px;
+    height: 35dvh; /* Dynamic viewport height - migliore su mobile */
+    width: 99dvw;
+  }
+
 }
 
 /* ========================
@@ -52,6 +82,18 @@ body {
   flex: 1;
   margin: 0;
   text-align: center;
+}
+
+@media (max-width: 480px) {
+  .bottoni-container {
+    gap: 8px;
+    margin-top: 10px;
+  }
+  
+  .btn {
+    padding: 12px 10px;
+    font-size: 0.95rem;
+  }
 }
 
 /* conferma = prenota */

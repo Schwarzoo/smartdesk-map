@@ -36,3 +36,34 @@
   background-color: #ff5252;
   box-shadow: 0 4px 8px rgba(255, 107, 107, 0.4);
 }
+
+/* ========================
+   📱 DEBUG MOBILE
+======================== */
+@media (max-width: 768px) {
+  .debug-container {
+    top: 5px;
+    right: 5px;
+    gap: 6px;
+  }
+  
+  .btn-debug {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .debug-container {
+    justify-content: space-between;
+    width: 95dvw;
+    top: 5px;
+    right: 3px;
+    gap: 4px;
+  }
+  
+  .btn-debug {
+    padding: 10px 10px;
+    font-size: 11px;
+  }
+}

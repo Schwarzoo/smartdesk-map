@@ -44,3 +44,31 @@
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(255, 152, 0, 0.4);
 }
+
+/* ========================
+   📱 LIBERA TAVOLO MOBILE
+======================== */
+@media (max-width: 768px) {
+  .libera-container {
+    top: 5px;
+    left: 5px;
+  }
+  
+  .btn-libera-principale {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .libera-container {
+    top: 65%;
+    left: 50%; /* Posiziona il bordo sinistro al 50% */
+    transform: translateX(-50%); /* Sposta indietro di metà larghezza = centrato! */
+  }
+  
+  .btn-libera-principale {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+}

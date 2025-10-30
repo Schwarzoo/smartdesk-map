@@ -18,7 +18,7 @@ function App() {
 
   // Custom hooks per gestione tavoli e zoom
   const { tavoli, ricaricaTavoli } = useTavoli();
-  const { zoom } = useZoom(areaRef);
+  const { zoom, offset, zoomIn, zoomOut } = useZoom(areaRef);
 
   function handleSelezionaTavolo(tavolo) {
     setTavoloSelezionato(tavolo);
@@ -36,13 +36,17 @@ function App() {
     <div className="mappa">
       <h1 className="titolo">SmartDesk Map</h1>
 
+      <div className="info-text">
+        <p>Seleziona un tavolo per effettuare una prenotazione. Usa i pulsanti di zoom sulla mappa</p>
+      </div>
+
       {/* PULSANTE LIBERA TAVOLO */}
       <div className="libera-container">
         <button 
           className="btn-libera-principale" 
           onClick={() => setMostraPopupLibera(true)}
         >
-          🔓 Libera Tavolo
+          Libera Tavolo
         </button>
       </div>
 
@@ -56,8 +60,11 @@ function App() {
       <Mappa 
         tavoli={tavoli}
         zoom={zoom}
+        offset={offset}
         areaRef={areaRef}
         onSelezionaTavolo={handleSelezionaTavolo}
+        onZoomIn={zoomIn}
+        onZoomOut={zoomOut}
       />
 
       {/* POPUP PRENOTAZIONE */}
