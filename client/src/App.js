@@ -20,17 +20,7 @@ function App() {
   const { tavoli, ricaricaTavoli } = useTavoli();
   const { zoom, offset, zoomIn, zoomOut } = useZoom(areaRef);
 
-  function handleSelezionaTavolo(tavolo) {
-    setTavoloSelezionato(tavolo);
-  }
-
-  function handleChiudiPopupPrenotazione() {
-    setTavoloSelezionato(null);
-  }
-
-  function handleChiudiPopupLibera() {
-    setMostraPopupLibera(false);
-  }
+  // handlers inlined directly in JSX below (removed small wrappers)
 
   return (
     <div className="mappa">
