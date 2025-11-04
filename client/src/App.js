@@ -52,7 +52,7 @@ function App() {
         zoom={zoom}
         offset={offset}
         areaRef={areaRef}
-        onSelezionaTavolo={handleSelezionaTavolo}
+        onSelezionaTavolo={(t) => setTavoloSelezionato(t)}
         onZoomIn={zoomIn}
         onZoomOut={zoomOut}
       />
@@ -61,14 +61,14 @@ function App() {
       <PopupPrenotazione 
         tavolo={tavoloSelezionato}
         tavoli={tavoli}
-        onChiudi={handleChiudiPopupPrenotazione}
+        onChiudi={() => setTavoloSelezionato(null)}
         onAggiornamento={ricaricaTavoli}
       />
 
       {/* POPUP LIBERA TAVOLO */}
       <PopupLiberaTavolo 
         mostra={mostraPopupLibera}
-        onChiudi={handleChiudiPopupLibera}
+        onChiudi={() => setMostraPopupLibera(false)}
         tavoli={tavoli}
         onAggiornamento={ricaricaTavoli}
       />
