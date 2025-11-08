@@ -16,9 +16,18 @@ export function generaOrariInizio(giorno) {
   const oraCorrente = adesso.getHours() + adesso.getMinutes() / 60;
   
   // Se è oggi, parti dall'ora corrente arrotondata alla mezz'ora successiva
+  // default: se oggi, partiamo dall'ora corrente (arrotondata)
   let oraPartenza = 0;
   if (giorno === "oggi") {
     oraPartenza = Math.ceil(oraCorrente * 2) / 2; // Arrotonda alla mezz'ora successiva
+  }
+
+  // Debug / dev override: permette di visualizzare orari passati
+  // Impostare REACT_APP_ALLOW_PAST=true in .env per abilitare
+  const allowPastEnv = (typeof process !== 'undefined' && process.env && process.env.REACT_APP_ALLOW_PAST === 'true') || (typeof window !== 'undefined' && window.__ALLOW_PAST === true);
+  if (allowPastEnv && giorno === "oggi") {
+    // mostra tutta la giornata (inclusi orari passati) per scopi di debug
+    oraPartenza = 0;
   }
   
   for (let ora = Math.max(0, Math.floor(oraPartenza)); ora < ORA_MASSIMA; ora++) {
@@ -27,7 +36,8 @@ export function generaOrariInizio(giorno) {
       const oraTotale = ora + m;
       if (oraTotale >= oraPartenza && oraTotale < ORA_MASSIMA) {
         const minuti = m === INCREMENTO_MEZZ_ORA ? "30" : "00";
-        orari.push({ valore: oraTotale, label: `${ora}:${minuti}` });
+        const oraFormattata = Math.floor(oraTotale % ORA_MASSIMA).toString().padStart(2, '0');
+        orari.push({ valore: oraTotale, label: `${oraFormattata}:${minuti}` });
       }
     });
   }
