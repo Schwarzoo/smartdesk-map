@@ -13,16 +13,12 @@ import { INCREMENTO_MEZZ_ORA, ORA_MASSIMA, DURATA_MINIMA } from "../constants/co
 export function generaOrariInizio(giorno) {
   const orari = [];
   const adesso = new Date();
-  const oraCorrente = adesso.getHours() + adesso.getMinutes() / 60;
-  
-  // Se è oggi, parti dall'ora corrente arrotondata alla mezz'ora successiva
-  // default: se oggi, per debug permettiamo la selezione di orari passati
-  // Nota: questa modifica abilita sempre la selezione di orari passati per 'oggi'.
-  // Se preferisci usare una variabile di ambiente, ripristina la logica precedente.
+
+  // Per scopi di debug mostriamo tutta la giornata per 'oggi' (inclusi orari passati)
+  // Se vuoi ripristinare il comportamento normale, impostare oraPartenza in base all'ora corrente.
   let oraPartenza = 0;
   if (giorno === "oggi") {
-    // partenza 0 -> mostra tutta la giornata incluse ore passate
-    oraPartenza = 0;
+    oraPartenza = 0; // mostra da 00:00 a 23:30
   }
   
   for (let ora = Math.max(0, Math.floor(oraPartenza)); ora < ORA_MASSIMA; ora++) {
