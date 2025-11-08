@@ -12,8 +12,6 @@ import { INCREMENTO_MEZZ_ORA, ORA_MASSIMA, DURATA_MINIMA } from "../constants/co
  */
 export function generaOrariInizio(giorno) {
   const orari = [];
-  const adesso = new Date();
-
   // Per scopi di debug mostriamo tutta la giornata per 'oggi' (inclusi orari passati)
   // Se vuoi ripristinare il comportamento normale, impostare oraPartenza in base all'ora corrente.
   let oraPartenza = 0;
