@@ -16,17 +16,12 @@ export function generaOrariInizio(giorno) {
   const oraCorrente = adesso.getHours() + adesso.getMinutes() / 60;
   
   // Se è oggi, parti dall'ora corrente arrotondata alla mezz'ora successiva
-  // default: se oggi, partiamo dall'ora corrente (arrotondata)
+  // default: se oggi, per debug permettiamo la selezione di orari passati
+  // Nota: questa modifica abilita sempre la selezione di orari passati per 'oggi'.
+  // Se preferisci usare una variabile di ambiente, ripristina la logica precedente.
   let oraPartenza = 0;
   if (giorno === "oggi") {
-    oraPartenza = Math.ceil(oraCorrente * 2) / 2; // Arrotonda alla mezz'ora successiva
-  }
-
-  // Debug / dev override: permette di visualizzare orari passati
-  // Impostare REACT_APP_ALLOW_PAST=true in .env per abilitare
-  const allowPastEnv = (typeof process !== 'undefined' && process.env && process.env.REACT_APP_ALLOW_PAST === 'true') || (typeof window !== 'undefined' && window.__ALLOW_PAST === true);
-  if (allowPastEnv && giorno === "oggi") {
-    // mostra tutta la giornata (inclusi orari passati) per scopi di debug
+    // partenza 0 -> mostra tutta la giornata incluse ore passate
     oraPartenza = 0;
   }
   

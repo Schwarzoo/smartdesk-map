@@ -48,7 +48,13 @@ function PopupPrenotazione({ tavolo,tavoli, onChiudi, onAggiornamento }) {
     
     const dataInizio = oraAData(form.oraInizio, form.giorno);
     const dataFine = oraAData(form.oraFine, form.giorno);
-    
+    // Permetti prenotazioni con inizio nel passato per scopi di debug
+    const adesso = new Date();
+    if (dataInizio < adesso) {
+      // bypassa il controllo di sovrapposizione se l'inizio è nel passato
+      return true;
+    }
+
     return !isSlotOccupato(tavolo, dataInizio, dataFine);
   }
   
